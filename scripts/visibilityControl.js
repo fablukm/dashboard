@@ -11,8 +11,6 @@ async function adjustLocationVisibility() {
         const elementIdSuffix = index;
         const locationDiv = document.getElementById(`location${elementIdSuffix}`);
         
-        console.log(location);
-
         if (locationDiv) {
             // Set the display style based on the "visible" property of the location
             locationDiv.style.display = location.visible ? "" : "none";
