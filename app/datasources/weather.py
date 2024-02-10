@@ -5,9 +5,15 @@ from pathlib import Path
 import requests
 
 class WeatherDataSource(DataSource):
-    def read_location_config():
+    def read_location_config() -> List[Dict]: 
         """Read locations from the config file"""
         config_path = Path(__file__).parent.parent / 'configs/locations.json'
+        with config_path.open('r') as file:
+            locations = json.load(file)
+        return locations
+    
+    def read_api_key() -> Dict:
+        config_path = Path(__file__).parent.parent / 'configs/api_keys.json'
         with config_path.open('r') as file:
             locations = json.load(file)
         return locations
