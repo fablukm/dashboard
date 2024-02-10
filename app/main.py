@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from datasources import data
+from .datasources.data import get_dashboard_data
 
 app = FastAPI()
 
@@ -17,4 +17,4 @@ async def read_index():
 
 @app.get("/dashboard")
 async def dashboard():
-    return data.get_dashboard_data()
+    return get_dashboard_data()

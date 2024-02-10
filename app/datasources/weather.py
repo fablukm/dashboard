@@ -5,21 +5,21 @@ from pathlib import Path
 import requests
 
 class WeatherDataSource(DataSource):
-    def read_location_config() -> List[Dict]: 
+    def read_location_config(self) -> List[Dict]: 
         """Read locations from the config file"""
         config_path = Path(__file__).parent.parent / 'configs/locations.json'
         with config_path.open('r') as file:
             locations = json.load(file)
         return locations
     
-    def read_api_key() -> Dict:
+    def read_api_key(self) -> Dict:
         config_path = Path(__file__).parent.parent / 'configs/api_keys.json'
         with config_path.open('r') as file:
             api_keys = json.load(file)
         osm_api_key = [value for value in api_keys if value["service"]=="OpenWeatherMaps"][0]
         return osm_api_key
     
-    def fetch_weather_for_location(name, timezone):
+    def fetch_weather_for_location(self, name, timezone):
         api_key = "YOUR_API_KEY"
         base_url = "http://api.openweathermap.org/data/2.5/weather"
         params = {
@@ -49,4 +49,4 @@ class WeatherDataSource(DataSource):
     
 if __name__=="__main__":
     wds = WeatherDataSource()
-    print(wds.read_api_key)
+    print(wds.read_api_key())
