@@ -11,13 +11,22 @@
     <div class="dashboard">
         <div class="column">
             <div class="time-weather box">
-                <h2 id="location">Your City</h2>
+                <h2 id="location0-title">Your City</h2>
                 <div class="current-time">
-                    <span id="time" class="big-time">Loading...</span>
+                    <span id="location0-time" class="big-time">Loading...</span>
                     <span id="weather-icon" class="weather-icon">⏳</span> <!-- Placeholder icon -->
                 </div>
                 <div id="additional-locations" class="additional-info">
-                    <!-- Additional locations will be inserted here -->
+                    <div id="location1">
+                        <h3  id="location1-title">Loading Loc 2...</h3>
+                        <div id="location1-time">Loading Time 2...</div>
+                        <div id="location1-weather">W2</div>
+                    </div>
+                    <div id="location2">
+                        <h3  id="location2-title">Loading Loc 3...</h3>
+                        <div id="location2-time">Loading Time 3...</div>
+                        <div id="location2-weather">W3</div>
+                    </div>
                 </div>
             </div>
             <div class="unread-emails box">
@@ -48,5 +57,6 @@
     <script src="scripts/emails.js"></script>
     <script src="scripts/time.js"></script>
     <script src="scripts/dashboard.js"></script>
+    <script src="scripts/visibilityControl.js"></script>
 </body>
 </html>

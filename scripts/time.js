@@ -1,19 +1,24 @@
-// This function assumes you can access the locations.json from a public directory
-async function fetchLocationsAndUpdateTime() {
-    const response = await fetch('configs/locations.json');
+async function updateTimeAndWeather() {
+    // Fetch the location configurations
+    const response = await fetch('/configs/locations.json');
     const locations = await response.json();
 
-    // Assuming your locations.json is an array of location objects
-    // e.g., [{"name": "City", "timezone": "Europe/Timezone"}, ...]
-    locations.forEach(location => {
-        const currentTime = getCurrentTimeForTimezone(location.timezone);
-        // Update your HTML accordingly. This example assumes you have placeholders
-        // for each location's time. You might need to adjust this based on your actual HTML structure.
-        const locationElement = document.getElementById(`time-${location.name}`);
-        if (locationElement) {
-            locationElement.textContent = `${location.name}: ${currentTime}`;
-        }
-    });
+    // Update location time
+    updateLocationTime(locations[0], 'location0');
+    updateLocationTime(locations[1], 'location1');
+    updateLocationTime(locations[2], 'location2');
+}
+
+function updateMainLocationTime(location) {
+    const currentTime = getCurrentTimeForTimezone(location.timezone);
+    document.getElementById('location0-title').textContent = location.name;
+    document.getElementById('location0-time').textContent = currentTime;
+}
+
+function updateLocationTime(location, elementIdPrefix) {
+    const currentTime = getCurrentTimeForTimezone(location.timezone);
+    document.getElementById(`${elementIdPrefix}-title`).textContent = location.name;
+    document.getElementById(`${elementIdPrefix}-time`).textContent = currentTime;
 }
 
 function getCurrentTimeForTimezone(timezone) {
@@ -21,6 +26,7 @@ function getCurrentTimeForTimezone(timezone) {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        timeZone: timezone
+        timeZone: timezone,
+        hour12: false // Use 24-hour time format
     }).format(new Date());
 }

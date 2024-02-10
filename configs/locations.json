@@ -11,6 +11,6 @@
     {
         "name": "Ha Noi", 
         "timezone": "Asia/Saigon",
-        "visible": false
+        "visible": true
     }
 ]

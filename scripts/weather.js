@@ -18,5 +18,22 @@ async function updateWeather() {
 }
 
 function chooseWeatherIcon(weatherId) {
-    // Your existing function here
+    // OpenWeatherMap weather conditions and corresponding FontAwesome icons
+    if (weatherId >= 200 && weatherId <= 232) {
+        return '<i class="fas fa-poo-storm"></i>'; // Thunderstorm
+    } else if (weatherId >= 300 && weatherId <= 321) {
+        return '<i class="fas fa-cloud-rain"></i>'; // Drizzle
+    } else if (weatherId >= 500 && weatherId <= 531) {
+        return '<i class="fas fa-cloud-showers-heavy"></i>'; // Rain
+    } else if (weatherId >= 600 && weatherId <= 622) {
+        return '<i class="fas fa-snowflake"></i>'; // Snow
+    } else if (weatherId >= 701 && weatherId <= 781) {
+        return '<i class="fas fa-smog"></i>'; // Atmosphere
+    } else if (weatherId === 800) {
+        return '<i class="fas fa-sun"></i>'; // Clear
+    } else if (weatherId >= 801 && weatherId <= 804) {
+        return '<i class="fas fa-cloud"></i>'; // Clouds
+    } else {
+        return '<i class="fas fa-question"></i>'; // Unknown
+    }
 }

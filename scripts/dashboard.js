@@ -10,4 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateEmails();
     setInterval(updateEmails, 20000); // Update emails twice per minute
+
+    updateTimeAndWeather();
+    setInterval(updateTimeAndWeather, 500); // Update time twice per second
+
+    adjustLocationVisibility();
 });
