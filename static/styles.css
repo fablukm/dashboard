@@ -1,0 +1,77 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.dashboard {
+    display: flex; /* Use flexbox to layout children */
+    justify-content: space-between; /* Distribute space between columns */
+    width: 800px; /* Fixed width */
+    height: 480px; /* Fixed height */
+    margin: 0 auto; /* Center the dashboard */
+    overflow: hidden;
+    flex-wrap: wrap;
+    /* gap: 10px;
+    max-width: 1200px;
+    padding: 20px;  */
+}
+
+.column {
+    flex: 1; /* Each column will flexibly fill the space */
+    display: flex; /* Optional: If you want column contents also to be flexibly displayed */
+    flex-direction: column; /* Optional: Stack column contents vertically */
+    padding: 5px; /* Optional: Add some space inside each column */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.box {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    color: #004B85; /* Navy blue */
+    margin-bottom: 5px;
+}
+
+.current-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.big-time {
+    font-size: 2.5rem;
+    color: #D01C1F; /* Bold for importance */
+}
+
+.weather-icon {
+    font-size: 2rem;
+}
+
+.additional-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.timezone {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .additional-info {
+        flex-direction: column;
+    }
+}

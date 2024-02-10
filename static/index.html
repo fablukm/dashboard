@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="column">
+            <div class="time-weather box">
+                <h2 id="location">Your City</h2>
+                <div class="current-time">
+                    <span id="time" class="big-time">Loading...</span>
+                    <span id="weather-icon" class="weather-icon">⏳</span> <!-- Placeholder icon -->
+                </div>
+                <div id="additional-locations" class="additional-info">
+                    <!-- Additional locations will be inserted here -->
+                </div>
+            </div>
+            <div class="unread-emails box">
+                <h2>Unread Emails</h2>
+                <p id="unread-emails">Loading...</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="calendar-events box">
+                <h2>Upcoming Events</h2>
+                <ul id="events-list">
+                    <!-- Events will be inserted here -->
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <div class="public-transport box">
+                <h2>Public Transport</h2>
+                <ul id="transport-list">
+                    <!-- Public transport connections will be inserted here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
