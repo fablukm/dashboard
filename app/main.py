@@ -6,13 +6,14 @@ from .data import get_dashboard_data
 app = FastAPI()
 
 # Serve static files
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 app.mount("/configs", StaticFiles(directory="configs"), name="configs")
+app.mount("/scripts", StaticFiles(directory="scripts"), name="scripts")
 
 # Serve index.html at the root
 @app.get("/")
 async def read_index():
-    return FileResponse('static/index.html')
+    return FileResponse('frontend/index.html')
 
 @app.get("/dashboard")
 async def dashboard():

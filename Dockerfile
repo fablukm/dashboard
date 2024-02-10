@@ -6,8 +6,9 @@ WORKDIR /code
 
 # Copy the current directory contents into the container at /code
 COPY ./app /code/app
-COPY ./static /code/static
+COPY ./frontend /code/frontend
 COPY ./configs /code/configs
+COPY ./scripts /code/scripts
 
 # Install any needed packages specified in requirements.txt
 RUN pip install fastapi uvicorn
