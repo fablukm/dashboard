@@ -4,6 +4,7 @@ configs/api_keys.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+datasources/__pycache__
 *.pyc
 */*.pyc
 */*/*.pyc
