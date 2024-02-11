@@ -1,4 +1,5 @@
-from data import ProcessedData, DataSource
+from datetime import datetime
+from data import DataSource
 from typing import List, Dict
 import json
 from pathlib import Path
@@ -11,6 +12,17 @@ class Location:
     timezone: str
     lat: float
     lon: float
+
+@dataclass
+class WeatherResult:
+    location: Dict
+    response: Dict
+    timestamp: str
+    WeatherId: int
+    WeatherIcon: str
+    Temperature: float
+    TemperatureFeelsLike: float
+    WindSpeed: float
 
 class WeatherDataSource(DataSource):
     def read_location_config(self) -> List[Dict]: 
@@ -31,8 +43,7 @@ class WeatherDataSource(DataSource):
         api_key = self.read_api_key()
         base_url = "http://api.openweathermap.org/data/2.5/weather"
         params = {
-            "lat": location["lat"],
-            "lon": location["lon"],
+            "q": location["name"],
             "appid": api_key,
             "units": "metric",
             "exclude": "daily,minutely,alerts",
@@ -44,31 +55,55 @@ class WeatherDataSource(DataSource):
         else:
             return None
 
-    def fetch_data(self) -> List[Dict]:
+    def fetch_data(self) -> List[WeatherResult]:
         """Fetch the raw data from an external source."""
         locations = self.read_location_config()
 
         weather_results = []
         for loc in locations:
             response = self.fetch_weather_for_location(loc)
-            result = {
-                "name": loc["name"],
-                "raw_info": loc,
-                "weather": response
-                }
             
-        pass
+            try:
+                result = WeatherResult(location=loc,
+                                       response=response, 
+                                       timestamp=datetime.now().__str__(),
+                                       WeatherId=response['weather'][0]['id'],
+                                       WeatherIcon=response['weather'][0]['icon'],
+                                       Temperature=response['main']['temp'],
+                                       TemperatureFeelsLike=response['main']['feels_like'],
+                                       WindSpeed=response['wind']['speed']
+                                       )
+            except:
+                result = WeatherResult(location=loc,
+                                       response=response, 
+                                       timestamp=datetime.now().__str__(),
+                                       WeatherId=0,
+                                       WeatherIcon='',
+                                       Temperature=0,
+                                       TemperatureFeelsLike=0,
+                                       WindSpeed=0
+                                       )
+            weather_results.append(result)
+            
+        return weather_results
 
-    def process_data(self, raw_data: List[Dict]) -> List[Dict]:
-        """Process raw data and extract relevant information."""
-        pass
+    def process_data(self, raw_data: List[WeatherResult]) -> List[Dict]:
+        api_response = {
+            "location": raw_data[0].location['name'],
+            "weather_icon": raw_data[0].WeatherIcon,
+            "weatherId": raw_data[0].WeatherId,
+            "additional_locations": [
+                {"location": raw_data[1].location['name'], 
+                 "weather_icon": raw_data[1].WeatherIcon, 
+                 "weatherId": raw_data[1].WeatherId},
+                {"location": raw_data[2].location['name'], 
+                 "weather_icon": raw_data[2].WeatherIcon, 
+                 "weatherId": raw_data[2].WeatherId}
+            ]
+            }
 
-    def get_data(self) -> List[Dict]:
-        """Fetch and process data, then return the processed data."""
-        raw_data = self.fetch_data()
-        processed_data = self.process_data(raw_data)
-        return processed_data
+        return api_response
     
 if __name__=="__main__":
     wds = WeatherDataSource()
-    print(wds.fetch_data())
+    print(wds.get_data())

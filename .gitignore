@@ -1,10 +1,12 @@
-app/__pycache__/*
-app/datasources/__pycache__/*
+*/__pycache__/
+*/*/__pycache__/
 configs/api_keys.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyc
+*/*.pyc
+*/*/*.pyc
 *.py[cod]
 *$py.class
 

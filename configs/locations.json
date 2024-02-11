@@ -2,21 +2,15 @@
     {
         "name": "Biel/Bienne", 
         "timezone": "Europe/Zurich",
-        "lat": 47.138070710162495,
-        "lon": 7.245603191604697,
         "visible": true
     }, 
         {"name": "Saint Petersburg", 
         "timezone": "Europe/Moscow",
-        "lat": 59.91732838700836,
-        "lon": 30.34581192655533,
         "visible": true
     }, 
     {
         "name": "Ha Noi", 
         "timezone": "Asia/Saigon",
-        "lat": 21.024356975372783,
-        "lon": 105.84865538669948,
         "visible": true
     }
 ]
