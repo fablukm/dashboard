@@ -32,7 +32,73 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
+    padding-top: 5px; /* Lower padding value for the top */
+    padding-bottom: 5px; /* Lower padding value for the bottom */
+    padding-left: 20px; /* Optional: Keeps left padding */
+    padding-right: 20px; /* Optional: Keeps right padding */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container {
+    display: flex; /* Use flexbox */
+}
+
+.location0-title {
+    width: 66%;
+}
+
+.location0-weather {
+    flex: 1; /* Set width to 50px */
+}
+
+.location1 {
+    text-align: left;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+}
+
+.row.header {
+    font-weight: bold;
+}
+
+.cell {
+    flex: 1; /* Makes each cell expand equally within its row */
+    padding: 8px; /* Adds some padding inside each cell for better readability */
+}
+
+/* Special styling for the third row to accommodate four cells */
+.row:nth-child(3) .cell {
+    flex: 0 100%; /* Each cell takes up 50% of the row's width */
+}
+
+.location1 {
+    text-align: left;
+}
+
+
+.location2 {
+    text-align: right;
+}
+
+.sublocation-weatherblock {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.sublocation-title {
+    display: flex;
+    align-items: flex-end; /* Aligns text to the bottom */
+    justify-content: flex-end
 }
 
 h2, h3 {

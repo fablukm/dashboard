@@ -69,7 +69,7 @@ class WeatherDataSource(DataSource):
                                        timestamp=datetime.now().__str__(),
                                        WeatherId=response['weather'][0]['id'],
                                        WeatherIcon=response['weather'][0]['icon'],
-                                       Temperature=response['main']['temp'],
+                                       Temperature=round(response['main']['temp']),
                                        TemperatureFeelsLike=response['main']['feels_like'],
                                        WindSpeed=response['wind']['speed']
                                        )
