@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     updateWeather(); // Call immediately then set interval
-    setInterval(updateWeather, 30000); // Update weather twice per minute
+    setInterval(updateWeather, 60000); // Update weather once per minute
 
     updateEvents();
     setInterval(updateEvents, 30000); // Update events twice per minute
@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     updateEmails();
     setInterval(updateEmails, 20000); // Update emails twice per minute
 
-    updateTimeAndWeather();
-    setInterval(updateTimeAndWeather, 500); // Update time twice per second
+    updateTime();
+    setInterval(updateTime, 500); // Update time twice per second
 
     adjustLocationVisibility();
 });

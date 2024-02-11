@@ -1,15 +1,19 @@
 [
     {
         "name": "Biel/Bienne", 
+        "displayname": "Biel",
         "timezone": "Europe/Zurich",
         "visible": true
     }, 
-        {"name": "Saint Petersburg", 
+    {
+        "name": "Saint Petersburg", 
+        "displayname": "St-Petersburg",
         "timezone": "Europe/Moscow",
         "visible": true
     }, 
     {
         "name": "Ha Noi", 
+        "displayname": "Ha Noi",
         "timezone": "Asia/Saigon",
         "visible": true
     }

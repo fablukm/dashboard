@@ -6,7 +6,7 @@ def get_dashboard_data():
     weather_data = weather_data_source.get_data()
 
     dashbard_api_response = {
-        "time_weather": weather_data,
+        "weather": weather_data,
         "events": [
             {"name": "Meeting with team", "time": "11:00 AM"},
             {"name": "Doctor's Appointment", "time": "3:00 PM"}

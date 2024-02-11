@@ -1,4 +1,4 @@
-async function updateTimeAndWeather() {
+async function updateTime() {
     // Fetch the location configurations
     const response = await fetch('/configs/locations.json');
     const locations = await response.json();
@@ -11,13 +11,13 @@ async function updateTimeAndWeather() {
 
 function updateMainLocationTime(location) {
     const currentTime = getCurrentTimeForTimezone(location.timezone);
-    document.getElementById('location0-title').textContent = location.name;
+    document.getElementById('location0-title').textContent = location.displayname;
     document.getElementById('location0-time').textContent = currentTime;
 }
 
 function updateLocationTime(location, elementIdPrefix) {
     const currentTime = getCurrentTimeForTimezone(location.timezone);
-    document.getElementById(`${elementIdPrefix}-title`).textContent = location.name;
+    document.getElementById(`${elementIdPrefix}-title`).textContent = location.displayname;
     document.getElementById(`${elementIdPrefix}-time`).textContent = currentTime;
 }
 

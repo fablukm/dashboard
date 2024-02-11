@@ -87,18 +87,23 @@ class WeatherDataSource(DataSource):
             
         return weather_results
 
-    def process_data(self, raw_data: List[WeatherResult]) -> List[Dict]:
+    def process_data(self, response_data: List[WeatherResult]) -> List[Dict]:
         api_response = {
-            "location": raw_data[0].location['name'],
-            "weather_icon": raw_data[0].WeatherIcon,
-            "weatherId": raw_data[0].WeatherId,
+            "location": response_data[0].location['name'],
+            "weather_icon": response_data[0].WeatherIcon,
+            "weatherId": response_data[0].WeatherId,
+            "temp": response_data[0].Temperature,
             "additional_locations": [
-                {"location": raw_data[1].location['name'], 
-                 "weather_icon": raw_data[1].WeatherIcon, 
-                 "weatherId": raw_data[1].WeatherId},
-                {"location": raw_data[2].location['name'], 
-                 "weather_icon": raw_data[2].WeatherIcon, 
-                 "weatherId": raw_data[2].WeatherId}
+                {"location": response_data[1].location['name'], 
+                 "weather_icon": response_data[1].WeatherIcon, 
+                 "weatherId": response_data[1].WeatherId,
+                 "temp": response_data[1].Temperature
+                 },
+                {"location": response_data[2].location['name'], 
+                 "weather_icon": response_data[2].WeatherIcon, 
+                 "weatherId": response_data[2].WeatherId,
+                 "temp": response_data[2].Temperature
+                 }
             ]
             }
 
