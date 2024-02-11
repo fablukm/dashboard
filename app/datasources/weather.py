@@ -1,10 +1,10 @@
 from datetime import datetime
-from data import DataSource
 from typing import List, Dict
 import json
 from pathlib import Path
 from dataclasses import dataclass
 import requests
+from .datasource import DataSource
 
 @dataclass
 class Location:
