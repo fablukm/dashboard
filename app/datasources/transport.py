@@ -15,6 +15,7 @@ except ImportError:
 DATETIME_API_FORMAT = r"%Y-%m-%d %H:%M:%S"
 DATETIME_OUTPUT_FORMAT = r"%H:%M"
 N_CONNECTIONS_FOR_API_CALLS = 30
+BASE_URL = "https://search.ch/fahrplan/api/stationboard.json"
 
 @dataclass
 class Station:
@@ -85,6 +86,28 @@ class TransportDataSource(DataSource):
 
             connection_list_empty.append(connection_group)
         return connection_list_empty
+    
+    def call_api(self, connection: ConnectionGroup) -> Dict:
+        params = {
+            'stop': connection.station_departure.api_id,
+            'limit': N_CONNECTIONS_FOR_API_CALLS,
+            'transportation_types': connection.transportation_types,
+            'show_subsequent_stops': 1,
+            'show_tracks': 1,
+            'show_delays': 1
+        }
+
+        response = requests.get(BASE_URL, params=params)
+
+        return response.json()
+
+    def format_response(self, connection_group: ConnectionGroup) -> None:
+        # extract matching connections from api response
+        connections = [con for con in connection_group._api_response['connections'] \
+            if True in [stop['id']==str(connection_group.station_arrival.api_id) \
+                        for stop in con['subsequent_stops']]]
+
+        return
 
     def fetch_data(self) -> List[ConnectionGroup]:
         """Fetch the raw data from an external source."""
@@ -93,14 +116,17 @@ class TransportDataSource(DataSource):
 
         # loop through all connections and call the api to get the info. Attach it to the object
         for connection_raw in connection_list_raw:
+            # TODO: merge departure stations together and avoid multiple calls for the same stationboard
             this_response = self.call_api(connection_raw)
             connection_raw._api_response = this_response
 
         return connection_list_raw
 
-    def process_data(self, connection_list_raw: List[ConnectionGroup]) -> List[ConnectionGroup]:
-        
-        connection_list = connection_list_raw
+    def process_data(self, connection_list: List[ConnectionGroup]) -> List[ConnectionGroup]:
+        '''formats the api responses to the required data structure'''
+
+        for connection_group in connection_list:
+            self.format_response(connection_group=connection_group)
 
         return connection_list
     
