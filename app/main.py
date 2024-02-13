@@ -6,7 +6,7 @@ from .datasources.data import get_dashboard_data
 app = FastAPI()
 
 # Serve static files
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 app.mount("/configs", StaticFiles(directory="configs"), name="configs")
 app.mount("/scripts", StaticFiles(directory="scripts"), name="scripts")
 
