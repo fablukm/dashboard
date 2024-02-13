@@ -1,5 +1,5 @@
-{
-    "connection1": {
+[
+    {
         "from": {
             "name": "Biel/Brunnenplatz",
             "api_id": 8504300
@@ -14,7 +14,7 @@
             "n_connections": 3
         }
     },
-    "connection2": {
+    {
         "from": {
             "name": "Biel/Bienne",
             "api_id": 8504300
@@ -26,10 +26,14 @@
         "info": {
             "transportation_types": "expresss_train",
             "show_platform": true,
-            "n_connections": 3
+            "n_connections": 3,
+            "airport": {
+                "name": "Zürich Flughafen",
+                "api_id": 8503016
+            }
         }
     },
-    "connection3": {
+    {
         "from": {
             "name": "Biel/Bienne",
             "api_id": 8504300
@@ -44,7 +48,7 @@
             "n_connections": 2
         }
     },
-    "connection4": {
+    {
         "from": {
             "name": "Biel/Bienne",
             "api_id": 8504300
@@ -56,10 +60,14 @@
         "info": {
             "transportation_types": "expresss_train",
             "show_platform": true,
-            "n_connections": 2
+            "n_connections": 2,
+            "airport": {
+                "name": "Genève-Aéroport",
+                "api_id": 8501026
+            }
         }
     },
-    "connection5": {
+    {
         "from": {
             "name": "Biel/Bienne",
             "api_id": 8504300
@@ -74,7 +82,7 @@
             "n_connections": 2
         }
     },
-    "connection6": {
+    {
         "from": {
             "name": "Biel/Bienne",
             "api_id": 8504300
@@ -89,4 +97,4 @@
             "n_connections": 2
         }
     }
-}
+]
