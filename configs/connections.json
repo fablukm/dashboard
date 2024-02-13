@@ -1,0 +1,92 @@
+{
+    "connection1": {
+        "from": {
+            "name": "Biel/Brunnenplatz",
+            "api_id": 8504300
+        },
+        "to": {
+            "name": "Port, Dorf",
+            "api_id": 8587315
+        },
+        "info": {
+            "transportation_types": "bus",
+            "show_platform": false,
+            "n_connections": 3
+        }
+    },
+    "connection2": {
+        "from": {
+            "name": "Biel/Bienne",
+            "api_id": 8504300
+        },
+        "to": {
+            "name": "Zürich HB",
+            "api_id": 8503000
+        },
+        "info": {
+            "transportation_types": "expresss_train",
+            "show_platform": true,
+            "n_connections": 3
+        }
+    },
+    "connection3": {
+        "from": {
+            "name": "Biel/Bienne",
+            "api_id": 8504300
+        },
+        "to": {
+            "name": "Bern",
+            "api_id": 8507000
+        },
+        "info": {
+            "transportation_types": "expresss_train",
+            "show_platform": true,
+            "n_connections": 2
+        }
+    },
+    "connection4": {
+        "from": {
+            "name": "Biel/Bienne",
+            "api_id": 8504300
+        },
+        "to": {
+            "name": "Neuchâtel",
+            "api_id": 8504221
+        },
+        "info": {
+            "transportation_types": "expresss_train",
+            "show_platform": true,
+            "n_connections": 2
+        }
+    },
+    "connection5": {
+        "from": {
+            "name": "Biel/Bienne",
+            "api_id": 8504300
+        },
+        "to": {
+            "name": "Basel",
+            "api_id": 8500010
+        },
+        "info": {
+            "transportation_types": "expresss_train",
+            "show_platform": true,
+            "n_connections": 2
+        }
+    },
+    "connection6": {
+        "from": {
+            "name": "Biel/Bienne",
+            "api_id": 8504300
+        },
+        "to": {
+            "name": "Saint-Imier",
+            "api_id": 8504310
+        },
+        "info": {
+            "transportation_types": "train",
+            "show_platform": true,
+            "n_connections": 2
+        }
+    }
+}
