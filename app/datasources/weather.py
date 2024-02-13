@@ -36,7 +36,7 @@ class WeatherDataSource(DataSource):
         config_path = Path(__file__).parent.parent.parent / 'configs/api_keys.json'
         with config_path.open('r') as file:
             api_keys = json.load(file)
-        osm_api_key = [value for value in api_keys if value["service"]=="OpenWeatherMaps"][0]
+        osm_api_key = api_keys["OpenWeatherMaps"]
         return osm_api_key["key"]
     
     def fetch_weather_for_location(self, location):
