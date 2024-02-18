@@ -14,7 +14,7 @@ except ImportError:
     
 DATETIME_API_FORMAT = r"%Y-%m-%d %H:%M:%S"
 DATETIME_OUTPUT_FORMAT = r"%H:%M"
-N_CONNECTIONS_FOR_API_CALLS = 40
+N_CONNECTIONS_FOR_API_CALLS = 50
 MAX_TIMEDIFF = timedelta(hours=12)
 BASE_URL = "https://search.ch/fahrplan/api/stationboard.json"
 
@@ -36,7 +36,7 @@ class Connection:
 @dataclass
 class ConnectionGroup:
     index: int
-    transportation_types: str
+    transportation_types: List[str]
     show_platform: bool
     n_connections: int
     station_departure: Station
@@ -133,7 +133,7 @@ class TransportDataSource(DataSource):
                                 if int(stop['id'])==arrival_station][0]
 
             # check if train type acceptable
-            if not departure['type'] == connection_group.transportation_types:
+            if not departure['type'] in connection_group.transportation_types:
                 continue
 
             # check time
@@ -162,6 +162,12 @@ class TransportDataSource(DataSource):
                 stops_at_airport = airport_station in \
                     [int(stop['id']) for stop in departure['subsequent_stops']]
 
+            # check platform if exists
+            try:
+                platform = int(departure['track'])
+            except KeyError:
+                platform = None
+
             # check terminus
             terminus = Station(name=departure['terminal']['name'], 
                                api_id=int(departure['terminal']['id']))
@@ -169,7 +175,7 @@ class TransportDataSource(DataSource):
             # fill in connection object
             this_connection = Connection(line=departure['line'],
                                          time=departure_time_string,
-                                         platform=int(departure['track']),
+                                         platform=platform,
                                          arrival_time=arrival_time_string,
                                          delay=delay,
                                          airport=stops_at_airport,
@@ -211,4 +217,5 @@ class TransportDataSource(DataSource):
     
 if __name__=="__main__":
     tds = TransportDataSource()
-    print(tds.get_data())
+    data = tds.get_data()
+    print(data)

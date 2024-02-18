@@ -9,7 +9,7 @@
             "api_id": 8587315
         },
         "info": {
-            "transportation_types": "bus",
+            "transportation_types": ["bus"],
             "show_platform": false,
             "n_connections": 3
         }
@@ -24,7 +24,7 @@
             "api_id": 8503000
         },
         "info": {
-            "transportation_types": "express_train",
+            "transportation_types": ["express_train"],
             "show_platform": true,
             "n_connections": 3,
             "airport": {
@@ -43,7 +43,7 @@
             "api_id": 8507000
         },
         "info": {
-            "transportation_types": "express_train",
+            "transportation_types": ["express_train"],
             "show_platform": true,
             "n_connections": 2
         }
@@ -58,7 +58,7 @@
             "api_id": 8504221
         },
         "info": {
-            "transportation_types": "express_train",
+            "transportation_types": ["express_train"],
             "show_platform": true,
             "n_connections": 2,
             "airport": {
@@ -77,7 +77,7 @@
             "api_id": 8500010
         },
         "info": {
-            "transportation_types": "express_train",
+            "transportation_types": ["express_train"],
             "show_platform": true,
             "n_connections": 2
         }
@@ -92,7 +92,7 @@
             "api_id": 8504310
         },
         "info": {
-            "transportation_types": "express_train",
+            "transportation_types": ["train", "express_train"],
             "show_platform": true,
             "n_connections": 2
         }
