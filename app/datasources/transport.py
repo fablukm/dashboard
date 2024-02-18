@@ -41,7 +41,6 @@ class ConnectionGroup:
     station_arrival: Station
     connections: List[Connection] = field(default_factory=list)
     airport: Optional[Station] = None
-    _api_response: Optional[dict] = None
 
 class TransportDataSource(DataSource):
     def read_connections_config(self) -> List[ConnectionGroup]:
@@ -87,11 +86,11 @@ class TransportDataSource(DataSource):
             connection_list_empty.append(connection_group)
         return connection_list_empty
     
-    def call_api(self, connection: ConnectionGroup) -> Dict:
+    def call_api(self, connection_group: ConnectionGroup) -> Dict:
         params = {
-            'stop': connection.station_departure.api_id,
+            'stop': connection_group.station_departure.api_id,
             'limit': N_CONNECTIONS_FOR_API_CALLS,
-            'transportation_types': connection.transportation_types,
+            'transportation_types': connection_group.transportation_types,
             'show_subsequent_stops': 1,
             'show_tracks': 1,
             'show_delays': 1
@@ -113,6 +112,8 @@ class TransportDataSource(DataSource):
         """Fetch the raw data from an external source."""
         # Read connection config
         connection_list_raw = self.read_connections_config()
+
+        
 
         # loop through all connections and call the api to get the info. Attach it to the object
         for connection_raw in connection_list_raw:

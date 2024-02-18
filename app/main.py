@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from .datasources.data import get_dashboard_data
+from .datasources.weather import WeatherDataSource
 
 app = FastAPI()
 
@@ -18,3 +19,9 @@ async def read_index():
 @app.get("/dashboard")
 async def dashboard():
     return get_dashboard_data()
+
+@app.get("/weather")
+async def weather():
+    weather_data_source = WeatherDataSource()
+    weather_data = weather_data_source.get_data()
+    return weather_data
