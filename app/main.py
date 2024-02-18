@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from .datasources.data import get_dashboard_data
 from .datasources.weather import WeatherDataSource
+from .datasources.transport import TransportDataSource
 
 app = FastAPI()
 
@@ -16,12 +16,14 @@ app.mount("/scripts", StaticFiles(directory="scripts"), name="scripts")
 async def read_index():
     return FileResponse('frontend/index.html')
 
-@app.get("/dashboard")
-async def dashboard():
-    return get_dashboard_data()
-
 @app.get("/weather")
 async def weather():
     weather_data_source = WeatherDataSource()
     weather_data = weather_data_source.get_data()
     return weather_data
+
+@app.get("/transport")
+async def transport():
+    transport_data_source = TransportDataSource()
+    transport_data = transport_data_source.get_data()
+    return transport_data

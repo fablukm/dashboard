@@ -92,7 +92,7 @@
             "api_id": 8504310
         },
         "info": {
-            "transportation_types": "train",
+            "transportation_types": "express_train",
             "show_platform": true,
             "n_connections": 2
         }

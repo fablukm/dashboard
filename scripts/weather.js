@@ -5,9 +5,9 @@ async function updateWeather() {
     // Update main location weather
     // document.getElementById('location0-title').textContent = `${data.weather.location}`;
     document.getElementById('location0-weather').innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather_icon}.png" alt="Weather Icon">`;
-    document.getElementById('location0-temp').innerHTML = `${data.weather.temp}&deg;`;
+    document.getElementById('location0-temp').innerHTML = `${data.temp}&deg;`;
 
-    weather.additional_locations.forEach((location, index) => {
+    data.additional_locations.forEach((location, index) => {
         const locationId = `location${index + 1}`;
         // document.getElementById(`${locationId}-title`).textContent = `${location.location}`;
         document.getElementById(`${locationId}-temp`).innerHTML = `${location.temp}&deg;`;
