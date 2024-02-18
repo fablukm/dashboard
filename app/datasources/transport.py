@@ -112,7 +112,6 @@ class TransportDataSource(DataSource):
             'show_delays': 1
         }
 
-        print(f"sending an api request to transport api")
         response = requests.get(BASE_URL, params=params)
 
         return response
