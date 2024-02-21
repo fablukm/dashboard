@@ -1,5 +1,5 @@
 async function updateTransport() {
-    const response = await fetch('/dashboard');
+    const response = await fetch('/transport');
     const data = await response.json();
 
     const transportList = document.getElementById('transport-list');

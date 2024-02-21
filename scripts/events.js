@@ -1,5 +1,5 @@
 async function updateEvents() {
-    const response = await fetch('/dashboard');
+    const response = await fetch('/calendar');
     const data = await response.json();
 
     const eventsList = document.getElementById('events-list');
