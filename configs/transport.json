@@ -1,12 +1,57 @@
 [
     {
         "from": {
-            "name": "Biel/Brunnenplatz",
-            "api_id": 8576408
+            "name": "Nidau",
+            "api_id": 8504461
         },
         "to": {
-            "name": "Port, Dorf",
-            "api_id": 8587315
+            "name": "Biel/Bienne",
+            "api_id": 8504300
+        },
+        "info": {
+            "transportation_types": ["strain"],
+            "show_platform": false,
+            "n_connections": 2
+        }
+    },
+    {
+        "from": {
+            "name": "Nidau, Bahnhof",
+            "api_id": 8594089
+        },
+        "to": {
+            "name": "Residenz",
+            "api_id": 8579946
+        },
+        "info": {
+            "transportation_types": ["bus"],
+            "show_platform": false,
+            "n_connections": 2
+        }
+    },
+    {
+        "from": {
+            "name": "Guglerstrasse",
+            "api_id": 8593388
+        },
+        "to": {
+            "name": "Biel/Bienne Bahnhof",
+            "api_id": 8576391
+        },
+        "info": {
+            "transportation_types": ["bus"],
+            "show_platform": false,
+            "n_connections": 2
+        }
+    },
+    {
+        "from": {
+            "name": "Zihlplatz",
+            "api_id": 8593386
+        },
+        "to": {
+            "name": "Biel/Bienne Bahnhof",
+            "api_id": 8576391
         },
         "info": {
             "transportation_types": ["bus"],

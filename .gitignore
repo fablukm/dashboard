@@ -1,3 +1,7 @@
+# custom
+copy_icons.ps1
+
+# general
 */__pycache__/
 */*/__pycache__/
 configs/api_keys.json

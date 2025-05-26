@@ -12,9 +12,9 @@
         "visible": true
     }, 
     {
-        "name": "Ha Noi", 
-        "displayname": "Ha Noi",
-        "timezone": "Asia/Saigon",
+        "name": "Surgut", 
+        "displayname": "Surgut",
+        "timezone": "Asia/Yekaterinburg",
         "visible": true
     }
 ]

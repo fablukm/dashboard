@@ -160,7 +160,21 @@ h2, h3 {
     width: calc(100% / 7);
 }
 
-.transport-icon img, .airport-icon img {
-    width: 24px; /* Adjust as needed */
+.transport-icon img {
+    width: 30px; /* Adjust as needed */
     height: auto;
+}
+
+.airport-icon img {
+    width: 20px; /* Adjust as needed */
+    height: auto;
+}
+
+.platform img {
+    width: 20px; /* Adjust as needed */
+    height: auto;
+}
+
+.calendar-events {
+  display: none;
 }

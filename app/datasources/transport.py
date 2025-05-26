@@ -14,7 +14,7 @@ except ImportError:
     
 DATETIME_API_FORMAT = r"%Y-%m-%d %H:%M:%S"
 DATETIME_OUTPUT_FORMAT = r"%H:%M"
-N_CONNECTIONS_FOR_API_CALLS = 50
+N_CONNECTIONS_FOR_API_CALLS = 100
 MAX_TIMEDIFF = timedelta(hours=12)
 BASE_URL = "https://search.ch/fahrplan/api/stationboard.json"
 
@@ -112,7 +112,8 @@ class TransportDataSource(DataSource):
             'show_delays': 1
         }
 
-        response = requests.get(BASE_URL, params=params)
+        self._api_url = requests.Request('GET', BASE_URL, params=params).prepare().url
+        response = requests.get(self._api_url)
 
         return response
 
