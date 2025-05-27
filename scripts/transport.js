@@ -36,7 +36,8 @@ async function updateTransport() {
                 // Icon based on line or type
                 const icon = document.createElement('div');
                 icon.classList.add('cell', 'transport-icon');
-                icon.innerHTML = `<img src="/static/assets/icons/${getIconForLine(conn.line)}.svg" alt="Transport icon">`;
+                const iconName = getIconForLine(conn.line);
+                icon.innerHTML = `<img src="/static/assets/icons/${iconName}.svg" alt="Transport icon">`;
                 row.appendChild(icon);
 
                 row.innerHTML += `
@@ -63,7 +64,7 @@ async function updateTransport() {
 
 function getIconForLine(line) {
     const lower = line.toLowerCase();
-    if (/^\d+$/.test(lower)) return 'bus-profile-small';
+    if (/^\d+$/.test(lower)) return 'bus-right';
     // if (lower.includes('ic')) return 'train';
     // if (lower.includes('ir')) return 'train';
     // if (lower.includes('re')) return 'train';
