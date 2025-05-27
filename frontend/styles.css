@@ -136,13 +136,13 @@ body {
 .transport-row {
   display: grid;
   grid-template-columns:
-    32px /* icon */
-    50px /* departure */
-    30px /* arrival */
-    10px /* delay */
-    1fr  /* terminus */
-    16px /* platform */
-    24px;/* airport */
+    45px /* icon */
+    30px /* departure */
+    15px /* delay */
+    30px /* platform */
+    150px /* terminus */
+    24px/* airport */
+    24px;/* arrival */
   align-items: center;
   gap: 4px;
   padding: 2px 4px;
@@ -158,13 +158,14 @@ body {
 .departure-time,
 .arrival-time,
 .delay {
-  text-align: center;
+  text-align: left;
   font-size: 11px;
 }
 
 .delay {
   color: red;
   font-weight: bold;
+  font-size: 9px;
 }
 
 .platform img {
@@ -174,7 +175,7 @@ body {
 
 .terminus {
   font-size: 11px;
-  padding-left: 4px;
+  padding-left: 0px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

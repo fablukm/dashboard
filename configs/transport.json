@@ -10,7 +10,7 @@
         },
         "info": {
             "transportation_types": ["strain"],
-            "show_platform": false,
+            "show_platform": true,
             "n_connections": 2
         }
     },
