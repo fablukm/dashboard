@@ -1,7 +1,11 @@
 async function updateTransport() {
     try {
+        Logger.info('Fetching transport data at', new Date().toISOString());
+
         const response = await fetch('/transport');
         const data = await response.json();
+
+        Logger.debug('Raw transport API response:', data);
 
         const bielContainer = document.querySelector('.biel-connections');
         const otherContainer = document.querySelector('.other-connections');
@@ -58,7 +62,7 @@ async function updateTransport() {
             targetContainer.appendChild(table);
         });
     } catch (error) {
-        console.error("Transport data fetch failed:", error);
+        Logger.error("Transport data fetch failed:", error);
     }
 }
 
@@ -73,3 +77,6 @@ function getIconForLine(line) {
 }
 
 document.addEventListener('DOMContentLoaded', updateTransport);
+
+// keep polling every 20 seconds, due to the limit of 10080 requests per day
+setInterval(updateTransport, 20000);

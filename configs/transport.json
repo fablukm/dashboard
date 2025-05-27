@@ -41,7 +41,7 @@
         "info": {
             "transportation_types": ["bus"],
             "show_platform": false,
-            "n_connections": 2
+            "n_connections": 3
         }
     },
     {

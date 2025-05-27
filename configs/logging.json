@@ -1,0 +1,8 @@
+{
+  "frontend": {
+    "level": "error"
+  },
+  "backend": {
+    "level": "debug"
+  }
+}
