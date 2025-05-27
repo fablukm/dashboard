@@ -29,83 +29,101 @@ body {
     60px    /* weather/time */
     1fr     /* transport tables */
     /
-    1fr 1fr;
+    2fr 1fr 1fr;
   gap: 4px;
   padding: 4px;
   height: 100%;
 }
 
-/* Weather Section */
-#wrapper > #weather-section {
+/* Weather & Time Section */
+#weather-section {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   align-items: center;
-  align-content: center;
   background: var(--bg);
   box-shadow: var(--shadow);
   border-radius: 4px;
   padding: 4px;
 }
 
-.weather-main {
+/* Main Sector */
+.main-sector {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100%;
+  padding: 0 8px;
 }
 
-.location-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-right: 8px;
-}
-
-.weather-icon,
-.weather-icon img {
-  height: 32px;
-  width: auto;
-  margin-right: 6px;
-}
-
-.weather-info {
+.main-clock {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.weather-temp {
-  font-size: 24px;
+.time-large {
+  font-size: 36px;
+  font-weight: bold;
 }
 
-.weather-time {
-  font-size: 14px;
-  color: #666;
-}
-
-.weather-additional {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.weather-additional .location {
-  text-align: center;
-}
-
-.weather-icon-small,
-.weather-icon-small img,
-.weather-temp-small {
-  vertical-align: middle;
-  height: 24px;
-  width: auto;
-  margin-right: 4px;
-}
-
-.weather-time-small {
-  display: block;
+.location-small {
   font-size: 12px;
   color: #666;
   margin-top: 2px;
+}
+
+.main-weather {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-icon-large,
+.weather-icon-large img {
+  height: 48px;
+  width: auto;
+}
+
+.temp-overlay {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.future-placeholder {
+  font-size: 10px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* Side Sectors */
+.side-sector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-title {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.side-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.side-icon,
+.side-icon img {
+  height: 16px;
+  width: auto;
 }
 
 /* Transport Sections */
@@ -116,6 +134,14 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+.transport-section.other-connections {
+  grid-column: 1 / 2;
+}
+
+.transport-section.biel-connections {
+  grid-column: 2 / 4;
 }
 
 .transport-section h3 {
@@ -136,13 +162,13 @@ body {
 .transport-row {
   display: grid;
   grid-template-columns:
-    45px /* icon */
-    30px /* departure */
-    15px /* delay */
-    30px /* platform */
+    45px  /* icon */
+    30px  /* departure */
+    15px  /* delay */
+    30px  /* platform */
     150px /* terminus */
-    24px/* airport */
-    24px;/* arrival */
+    24px  /* airport */
+    24px; /* arrival */
   align-items: center;
   gap: 4px;
   padding: 2px 4px;
@@ -175,7 +201,7 @@ body {
 
 .terminus {
   font-size: 11px;
-  padding-left: 0px;
+  padding-left: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

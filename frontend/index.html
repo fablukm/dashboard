@@ -11,26 +11,34 @@
   <div id="wrapper">
     <!-- Weather & Time Section -->
     <section id="weather-section">
-      <div class="weather-main">
-        <div class="location-title" id="location0-title">--</div>
-        <div class="weather-icon" id="location0-weather"></div>
-        <div class="weather-info">
-          <div class="weather-temp" id="location0-temp">--°</div>
-          <div class="weather-time" id="location0-time">--:--</div>
+      <!-- Main Sector (50%) -->
+      <div class="sector main-sector">
+        <div class="main-clock">
+          <div class="time-large" id="location0-time">--:--</div>
+          <div class="location-small" id="location0-title">--</div>
+        </div>
+        <div class="main-weather">
+          <div class="weather-icon-large" id="location0-weather"></div>
+          <div class="temp-overlay" id="location0-temp">--°</div>
+          <div class="future-placeholder" id="location0-future">☀️ in 1h</div>
         </div>
       </div>
-      <div class="weather-additional">
-        <div class="location" id="location1-block">
-          <div class="location-title" id="location1-title">--</div>
-          <div class="weather-icon-small" id="location1-weather"></div>
-          <div class="weather-temp-small" id="location1-temp">--°</div>
-          <div class="weather-time-small" id="location1-time">--:--</div>
+      <!-- Side Sector 1 (25%) -->
+      <div class="sector side-sector" id="location1-block">
+        <div class="side-title" id="location1-title">--</div>
+        <div class="side-info">
+          <span class="side-time" id="location1-time">--:--</span>
+          <span class="side-icon" id="location1-weather"></span>
+          <span class="side-temp" id="location1-temp">--°</span>
         </div>
-        <div class="location" id="location2-block">
-          <div class="location-title" id="location2-title">--</div>
-          <div class="weather-icon-small" id="location2-weather"></div>
-          <div class="weather-temp-small" id="location2-temp">--°</div>
-          <div class="weather-time-small" id="location2-time">--:--</div>
+      </div>
+      <!-- Side Sector 2 (25%) -->
+      <div class="sector side-sector" id="location2-block">
+        <div class="side-title" id="location2-title">--</div>
+        <div class="side-info">
+          <span class="side-time" id="location2-time">--:--</span>
+          <span class="side-icon" id="location2-weather"></span>
+          <span class="side-temp" id="location2-temp">--°</span>
         </div>
       </div>
     </section>
