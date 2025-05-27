@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 :root {
-  --font: 'Verdana', 'Arial', sans-serif;
+  --font: 'Open Sans', Arial, sans-serif;
   --text: #333;
   --bg: #fff;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -26,7 +27,7 @@ body {
 #wrapper {
   display: grid;
   grid-template:
-    60px    /* weather/time */
+    80px    /* weather/time increased */
     1fr     /* transport tables */
     /
     2fr 1fr 1fr;
@@ -50,50 +51,52 @@ body {
 /* Main Sector */
 .main-sector {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 24px;
   padding: 0 8px;
 }
 
 .main-clock {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .time-large {
   font-size: 36px;
-  font-weight: bold;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .location-small {
-  font-size: 12px;
+  font-size: 16px;
   color: #666;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .main-weather {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .weather-icon-large,
 .weather-icon-large img {
-  height: 48px;
+  height: 72px;
   width: auto;
 }
 
 .temp-overlay {
   position: absolute;
-  top: 2px;
-  right: 6px;
+  top: 15px;
+  right: -10px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .future-placeholder {
+  visibility:  hidden;
   font-size: 10px;
   color: #666;
   margin-top: 4px;
@@ -108,21 +111,21 @@ body {
 }
 
 .side-title {
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 2px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .side-info {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 10px;
+  gap: 6px;
+  font-size: 14px;
 }
 
 .side-icon,
 .side-icon img {
-  height: 16px;
+  height: 25px;
   width: auto;
 }
 
@@ -190,7 +193,7 @@ body {
 
 .delay {
   color: red;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 9px;
 }
 

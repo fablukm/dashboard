@@ -56,7 +56,7 @@
         "info": {
             "transportation_types": ["bus"],
             "show_platform": false,
-            "n_connections": 3
+            "n_connections": 2
         }
     },
     {
@@ -71,7 +71,7 @@
         "info": {
             "transportation_types": ["express_train"],
             "show_platform": true,
-            "n_connections": 3,
+            "n_connections": 2,
             "airport": {
                 "name": "Zürich Flughafen",
                 "api_id": 8503016
