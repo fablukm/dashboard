@@ -1,74 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/static/styles.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=800, height=480, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
-    <div class="dashboard">
-        <div class="column">
-            <div class="time-weather box">
-                <div class="container">
-                    <div class="location0-title">
-                        <h2 id="location0-title" style="display: inline-block; margin-right: 100px;">
-                            Biel
-                        </h2>
-                    </div>
-                    <div id="location0-weather" class="weather-icon" style="display: inline-block;height: 50px; width: 50px;">
-                        <img src="http://openweathermap.org/img/wn/04d.png" alt="Weather Icon">
-                    </div>
-                </div>
-                <div class="current-time">
-                    <span id="location0-time" class="big-time">21:30</span>
-                    <span id="location0-temp">1&deg;</span>
-                </div>
-                <div id="additional-locations" class="table">
-                    <div class="row header">
-                        <div class="cell sublocation-title location1"><h3  id="location1-title">Saint Petersburg</h3></div>
-                        <div class="cell sublocation-title location2"><h3  id="location2-title">Ha Noi</h3></div>
-                    </div>
-                    <div class="row">
-                        <div id="location1-time" class="cell location1">10:00</div>
-                        <div id="location2-time" class="cell location2">03:00</div>
-                    </div>
-                    <div class="row" style="align-content: end;">
-                        <div id="location1-weather" class="cell location1 sublocation-weatherblock">W1</div>
-                        <div id="location1-temp"  class="cell location1 sublocation-tempblock">-10&deg;</div>
-                        <div id="location2-weather" class="cell location2 sublocation-weatherblock">W2</div>
-                        <div id="location2-temp"  class="cell location2 sublocation-tempblock">25&deg;</div>
-                    </div>
-                </div>
-            </div>
-            <div class="unread-emails box">
-                <h2>Unread Emails</h2>
-                <p id="unread-emails">Loading...</p>
-            </div>
+  <div id="wrapper">
+    <!-- Weather & Time Section -->
+    <section id="weather-section">
+      <div class="weather-main">
+        <div class="location-title" id="location0-title">--</div>
+        <div class="weather-icon" id="location0-weather"></div>
+        <div class="weather-info">
+          <div class="weather-temp" id="location0-temp">--°</div>
+          <div class="weather-time" id="location0-time">--:--</div>
         </div>
-        <div class="column">
-            <div class="calendar-events box">
-                <h2>Upcoming Events</h2>
-                <ul id="events-list">
-                    <!-- Events will be inserted here -->
-                </ul>
-            </div>
+      </div>
+      <div class="weather-additional">
+        <div class="location" id="location1-block">
+          <div class="location-title" id="location1-title">--</div>
+          <div class="weather-icon-small" id="location1-weather"></div>
+          <div class="weather-temp-small" id="location1-temp">--°</div>
+          <div class="weather-time-small" id="location1-time">--:--</div>
         </div>
-        <div class="column">
-            <div class="public-transport box">
-                <h2>Public Transport</h2>
-                <!-- This section will be filled dynamically -->
-            </div>
-            
+        <div class="location" id="location2-block">
+          <div class="location-title" id="location2-title">--</div>
+          <div class="weather-icon-small" id="location2-weather"></div>
+          <div class="weather-temp-small" id="location2-temp">--°</div>
+          <div class="weather-time-small" id="location2-time">--:--</div>
         </div>
-    </div>
-    <script src="scripts/weather.js"></script>
-    <script src="scripts/events.js"></script>
-    <script src="scripts/transport.js"></script>
-    <script src="scripts/emails.js"></script>
-    <script src="scripts/time.js"></script>
-    <script src="scripts/dashboard.js"></script>
-    <script src="scripts/visibilityControl.js"></script>
+      </div>
+    </section>
+
+    <!-- Bus Departures Section -->
+    <section class="transport-section other-connections">
+      <h3 id="other-title">Other Transport Connections</h3>
+      <div class="transport-table" id="other-table"></div>
+    </section>
+
+    <!-- Train Departures Section -->
+    <section class="transport-section biel-connections">
+      <h3 id="biel-title">Connections from Biel</h3>
+      <div class="transport-table" id="biel-table"></div>
+    </section>
+  </div>
+
+  <script src="scripts/weather.js"></script>
+  <script src="scripts/transport.js"></script>
 </body>
 </html>

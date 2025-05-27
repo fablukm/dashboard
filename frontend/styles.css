@@ -1,180 +1,186 @@
+:root {
+  --font: 'Verdana', 'Arial', sans-serif;
+  --text: #333;
+  --bg: #fff;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
+  width: 800px;
+  height: 480px;
+  overflow: hidden;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
 }
 
-.dashboard {
-    display: flex; /* Use flexbox to layout children */
-    justify-content: space-between; /* Distribute space between columns */
-    /* width: 800px; Fixed width */
-    /* height: 480px; /* Fixed height */
-    margin: 0 auto; /* Center the dashboard */
-    overflow: hidden;
-    flex-wrap: wrap;
-    /* gap: 10px;
-    max-width: 1200px;
-    padding: 20px;  */
+/* Layout Grid */
+#wrapper {
+  display: grid;
+  grid-template:
+    60px    /* weather/time */
+    1fr     /* transport tables */
+    /
+    1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  height: 100%;
 }
 
-.column {
-    flex: 1; /* Each column will flexibly fill the space */
-    display: flex; /* Optional: If you want column contents also to be flexibly displayed */
-    flex-direction: column; /* Optional: Stack column contents vertically */
-    padding: 5px; /* Optional: Add some space inside each column */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+/* Weather Section */
+#wrapper > #weather-section {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+  align-content: center;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  padding: 4px;
 }
 
-.box {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    padding-top: 5px; /* Lower padding value for the top */
-    padding-bottom: 5px; /* Lower padding value for the bottom */
-    padding-left: 20px; /* Optional: Keeps left padding */
-    padding-right: 20px; /* Optional: Keeps right padding */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.weather-main {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
-.container {
-    display: flex; /* Use flexbox */
+.location-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 8px;
 }
 
-.location0-title {
-    width: 66%;
+.weather-icon,
+.weather-icon img {
+  height: 32px;
+  width: auto;
+  margin-right: 6px;
 }
 
-.location0-weather {
-    flex: 1; /* Set width to 50px */
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.location1 {
-    text-align: left;
+.weather-temp {
+  font-size: 24px;
 }
 
-.table {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.weather-time {
+  font-size: 14px;
+  color: #666;
 }
 
-.row {
-    display: flex;
-    width: 100%;
+.weather-additional {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.row.header {
-    font-weight: bold;
+.weather-additional .location {
+  text-align: center;
 }
 
-.cell {
-    flex: 1; /* Makes each cell expand equally within its row */
-    padding: 8px; /* Adds some padding inside each cell for better readability */
+.weather-icon-small,
+.weather-icon-small img,
+.weather-temp-small {
+  vertical-align: middle;
+  height: 24px;
+  width: auto;
+  margin-right: 4px;
 }
 
-/* Special styling for the third row to accommodate four cells */
-.row:nth-child(3) .cell {
-    flex: 0 100%; /* Each cell takes up 50% of the row's width */
+.weather-time-small {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
 }
 
-.location1 {
-    text-align: left;
+/* Transport Sections */
+.transport-section {
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-
-.location2 {
-    text-align: right;
+.transport-section h3 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
 }
 
-.sublocation-weatherblock {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
+.transport-table {
+  flex: 1;
+  overflow-y: auto;
 }
 
-.sublocation-title {
-    display: flex;
-    align-items: flex-end; /* Aligns text to the bottom */
-    justify-content: flex-end
+.transport-row {
+  display: grid;
+  grid-template-columns:
+    32px /* icon */
+    50px /* departure */
+    30px /* arrival */
+    10px /* delay */
+    1fr  /* terminus */
+    16px /* platform */
+    24px;/* airport */
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-h2, h3 {
-    color: #004B85; /* Navy blue */
-    margin-bottom: 5px;
-}
-
-.current-time {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-}
-
-.big-time {
-    font-size: 2.5rem;
-    color: #D01C1F; /* Bold for importance */
-}
-
-.weather-icon {
-    width: 50px;
-    height: 50px;
-}
-
-.additional-info {
-    display: flex;
-    justify-content: space-between;
-}
-
-.timezone {
-    text-align: center;
-}
-
-@media (max-width: 768px) {
-    .dashboard {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .additional-info {
-        flex-direction: column;
-    }
-}
-
-.public-transport .transport-table {
-    display: table;
-    margin-top: 10px;
-}
-
-.public-transport .transport-row {
-    display: table-row;
-}
-
-.public-transport .transport-row .cell {
-    display: table-cell;
-    text-align: center;
-    padding: 5px;
-    border: 1px solid #ddd;
-    width: calc(100% / 7);
-}
-
+.transport-icon,
 .transport-icon img {
-    width: 30px; /* Adjust as needed */
-    height: auto;
+  height: 15px;
+  width: auto;
 }
 
-.airport-icon img {
-    width: 20px; /* Adjust as needed */
-    height: auto;
+.departure-time,
+.arrival-time,
+.delay {
+  text-align: center;
+  font-size: 11px;
+}
+
+.delay {
+  color: red;
+  font-weight: bold;
 }
 
 .platform img {
-    width: 20px; /* Adjust as needed */
-    height: auto;
+  height: 15px;
+  width: auto;
 }
 
-.calendar-events {
-  display: none;
+.terminus {
+  font-size: 11px;
+  padding-left: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.airport-icon img {
+  height: 16px;
+  width: auto;
 }

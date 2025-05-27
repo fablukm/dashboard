@@ -3,14 +3,28 @@ async function updateTransport() {
         const response = await fetch('/transport');
         const data = await response.json();
 
-        const container = document.querySelector('.public-transport');
-        container.innerHTML = '<h2>Public Transport</h2>';
+        const bielContainer = document.querySelector('.biel-connections');
+        const otherContainer = document.querySelector('.other-connections');
+        // Clear containers except for their h2
+        bielContainer.innerHTML = '';
+        otherContainer.innerHTML = '';
 
         data.forEach(group => {
+            const targetContainer = group.station_departure.name === "Biel/Bienne"
+                ? bielContainer
+                : otherContainer;
+
             // Title per connection group
             const title = document.createElement('h3');
-            title.textContent = `${group.station_departure.name} → ${group.station_arrival.name}`;
-            container.appendChild(title);
+            if (!group.connections || group.connections.length === 0) {
+                title.textContent = `no connections ${group.station_departure.name} → ${group.station_arrival.name}`;
+                targetContainer.appendChild(title);
+                // Do not show the table
+                return;
+            } else {
+                title.textContent = `${group.station_departure.name} → ${group.station_arrival.name}`;
+            }
+            targetContainer.appendChild(title);
 
             const table = document.createElement('div');
             table.classList.add('transport-table');
@@ -40,7 +54,7 @@ async function updateTransport() {
                 table.appendChild(row);
             });
 
-            container.appendChild(table);
+            targetContainer.appendChild(table);
         });
     } catch (error) {
         console.error("Transport data fetch failed:", error);

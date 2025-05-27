@@ -14,7 +14,7 @@ except ImportError:
     
 DATETIME_API_FORMAT = r"%Y-%m-%d %H:%M:%S"
 DATETIME_OUTPUT_FORMAT = r"%H:%M"
-N_CONNECTIONS_FOR_API_CALLS = 100
+N_CONNECTIONS_FOR_API_CALLS = 50
 MAX_TIMEDIFF = timedelta(hours=12)
 BASE_URL = "https://search.ch/fahrplan/api/stationboard.json"
 
@@ -123,6 +123,9 @@ class TransportDataSource(DataSource):
         # extract information
         arrival_station = connection_group.station_arrival.api_id
 
+        # Track already added departure times to avoid duplicates
+        seen_departure_times = set(conn.time for conn in connection_group.connections)
+
         for departure in station_departures:
             # check if arrival station inside subsequent stops
             is_valid = arrival_station in \
@@ -146,6 +149,11 @@ class TransportDataSource(DataSource):
             else:
                 departure_time_string = departure_time.strftime("%H:%M")
 
+            # Only append if this departure time is not already in the list
+            if departure_time_string in seen_departure_times:
+                continue
+            seen_departure_times.add(departure_time_string)
+
             # extract arrival time
             arrival_time = datetime.strptime(arrival_info['arr'], DATETIME_API_FORMAT)
             arrival_time_string = arrival_time.strftime("%H:%M")
@@ -165,8 +173,13 @@ class TransportDataSource(DataSource):
 
             # check platform if exists
             try:
-                platform = int(departure['track'])
+                platform_str = departure['track']
+                # Extract only digits from the platform string
+                platform_digits = ''.join(filter(str.isdigit, str(platform_str)))
+                platform = int(platform_digits) if platform_digits else None
             except KeyError:
+                platform = None
+            except ValueError:
                 platform = None
 
             # check terminus
