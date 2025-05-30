@@ -210,6 +210,11 @@ body {
   white-space: nowrap;
 }
 
+.bus-line-number {
+  font-size: 10px;
+  vertical-align: middle;
+}
+
 .airport-icon img {
   height: 16px;
   width: auto;

@@ -11,7 +11,8 @@
         "info": {
             "transportation_types": ["strain"],
             "show_platform": true,
-            "n_connections": 2
+            "n_connections": 2,
+            "max_number_of_stops": 10
         }
     },
     {
@@ -26,7 +27,8 @@
         "info": {
             "transportation_types": ["bus"],
             "show_platform": false,
-            "n_connections": 2
+            "n_connections": 2,
+            "max_number_of_stops": 10
         }
     },
     {
@@ -41,7 +43,8 @@
         "info": {
             "transportation_types": ["bus"],
             "show_platform": false,
-            "n_connections": 3
+            "n_connections": 3,
+            "max_number_of_stops": 10
         }
     },
     {
@@ -56,7 +59,8 @@
         "info": {
             "transportation_types": ["bus"],
             "show_platform": false,
-            "n_connections": 2
+            "n_connections": 2,
+            "max_number_of_stops": 10
         }
     },
     {
@@ -72,6 +76,7 @@
             "transportation_types": ["express_train"],
             "show_platform": true,
             "n_connections": 2,
+            "max_number_of_stops": 100,
             "airport": {
                 "name": "Zürich Flughafen",
                 "api_id": 8503016
@@ -90,7 +95,8 @@
         "info": {
             "transportation_types": ["express_train"],
             "show_platform": true,
-            "n_connections": 2
+            "n_connections": 2,
+            "max_number_of_stops": 100
         }
     },
     {
@@ -106,6 +112,7 @@
             "transportation_types": ["express_train"],
             "show_platform": true,
             "n_connections": 2,
+            "max_number_of_stops": 100,
             "airport": {
                 "name": "Genève-Aéroport",
                 "api_id": 8501026
@@ -124,7 +131,8 @@
         "info": {
             "transportation_types": ["express_train"],
             "show_platform": true,
-            "n_connections": 2
+            "n_connections": 2,
+            "max_number_of_stops": 100
         }
     },
     {
@@ -139,7 +147,8 @@
         "info": {
             "transportation_types": ["train", "express_train"],
             "show_platform": true,
-            "n_connections": 2
+            "n_connections": 2,
+            "max_number_of_stops": 100
         }
     }
 ]

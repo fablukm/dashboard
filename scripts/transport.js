@@ -42,6 +42,7 @@ async function updateTransport() {
                 icon.classList.add('cell', 'transport-icon');
                 const iconName = getIconForLine(conn.line);
                 icon.innerHTML = `<img src="/static/assets/icons/${iconName}.svg" alt="Transport icon">`;
+                 + (/^\d+$/.test(conn.line) ? `<span class="bus-line-number" style="font-size:10px;"> ${conn.line}</span>` : '')
                 row.appendChild(icon);
 
                 row.innerHTML += `

@@ -42,6 +42,7 @@ class ConnectionGroup:
     station_departure: Station
     station_arrival: Station
     connections: List[Connection] = field(default_factory=list)
+    max_number_of_stops: int = 100
     airport: Optional[Station] = None
 
 class TransportDataSource(DataSource):
@@ -77,7 +78,8 @@ class TransportDataSource(DataSource):
                 show_platform=connection['info']['show_platform'],
                 n_connections=connection['info']['n_connections'],
                 station_departure=station_departure,
-                station_arrival=station_arrival
+                station_arrival=station_arrival,
+                max_number_of_stops=connection['info']['max_number_of_stops']
             )
 
             # read airport if there is one
@@ -127,9 +129,11 @@ class TransportDataSource(DataSource):
         seen_departure_times = set(conn.time for conn in connection_group.connections)
 
         for departure in station_departures:
+            # cut off the station list
+            departure_limited = departure['subsequent_stops'][:connection_group.max_number_of_stops]
             # check if arrival station inside subsequent stops
             is_valid = arrival_station in \
-                [int(stop['id']) for stop in departure['subsequent_stops']]
+                [int(stop['id']) for stop in departure_limited]
             if not is_valid:
                 continue
             else:
